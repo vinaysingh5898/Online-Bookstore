@@ -1,0 +1,219 @@
+{%extends "base.html"%}
+{%load crispy_forms_tags%}
+{% load staticfiles%}
+
+{% block content%}
+<!-- <div class="container" style="padding: 100px;">
+	<div class="row">
+		<div class="col-md-7 col-md-offset-4">
+			<h1>About us</h1>
+			<p>
+				Rows must be placed within a .container (fixed-width) or .container-fluid (full-width) for proper alignment and padding.
+Use rows to create horizontal groups of columns.
+Content should be placed within columns, and only columns may be immediate children of rows.
+Predefined grid classes like .row and .col-xs-4 are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.
+Columns create gutters (gaps between column content) via padding. That padding is offset in rows for the first and last column via negative margin on .rows.
+The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.
+Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three .col-xs-4.
+If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
+Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, e.g. applying any .col-md-* class to an element will not only affect its styling on medium devices but also on large devices if a .col-lg-* class is not present.
+
+			</p>
+		</div>
+	</div>
+</div> -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{%url 'home'%}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">About</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- about -->
+	<div class="about">
+		<div class="container">
+			<h3 class="w3_agile_header">About Us</h3>
+			<div class="about-agileinfo w3layouts">
+				<div class="col-md-8 about-wthree-grids grid-top">
+					<h4>Our vision </h4>
+					<p class="top">We are group of Students who aiming at overcoming the shortcomings of conventional bookstores we usually come across. Developing this website is a part of our project. </p>
+					<p>Online Book Store is one of the leading book store of every genres. It has a wealth of books with considerable strengths in the Medical, Science ans Technology, Humunities, Social Sciences, General. You name a subject we have a books... It aims to be the book store of choice for Doctors, Engineers, Technocrafts, Corporates, Scientists, Academics, Students, Scholars. </p>		
+					<div class="about-w3agilerow">
+						<div class="col-md-4 about-w3imgs">
+							<img src="../media/images/bookfirst.jpg" alt="" class="img-responsive zoom-img"/>
+						</div>
+						<div class="col-md-4 about-w3imgs">
+							<img src="../media/images/booksecond.jpg" alt=""  class="img-responsive zoom-img"/>
+						</div>
+						<div class="col-md-4 about-w3imgs">
+							<img src="../media/images/bookthird.jpg" alt=""  class="img-responsive zoom-img"/>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				
+				
+				<div class="col-md-4 about-wthree-grids">
+					<div class="offic-time">
+						<div class="time-top">
+							<h4>Presenting</h4>
+						</div>
+						<div class="time-bottom">
+							<h5>Online Bookstore </h5>
+							<p>A book can change your life</p>
+						</div>
+					</div>
+					<div class="testi">
+						
+						<script src="{% static 'js/responsiveslides.min.js'%}"></script>  
+						 <script>
+							// You can also use "$(window).load(function() {"
+							$(function () {
+							  // Slideshow 5
+							  $("#slider5").responsiveSlides({
+								auto: true,
+								pager: false,
+								nav: true,
+								speed: 500,
+								namespace: "callbacks",
+								before: function () {
+								  $('.events').append("<li>before event fired.</li>");
+								},
+								after: function () {
+								  $('.events').append("<li>after event fired.</li>");
+								}
+							  });
+						
+							});
+						  </script>
+						<div  id="top" class="callbacks_container">
+							<ul class="rslides" id="slider5">
+									<li>
+											<div class="testi-slider">
+												<h4>"Best thing about Book"</h4>
+												<p>“Just the feeling of holding a book and that new book smell I love in some weird way that makes me feel more (physically) connected to the story”</p>
+												<div class="testi-subscript">
+													<p> --- <b> Sachin </b></p>
+													<span class="w3-agilesub"> </span>
+												</div>	
+											</div>
+										</li>
+							</ul>
+								
+						</div>
+					</div>
+				</div>
+									<div class="row">
+										<div class="col-md-4">
+										
+									<div class="testi-slider">
+										<h4>"Best thing about Book"</h4>
+										<p>“Books always offer you knowledge; even if it you aren’t reading for academic purposes, they still teach you life lessons and morals. I love to read because it is relaxing. I like being swept up in a good story.”</p>
+										<div class="testi-subscript">
+											<p> --- <b> Mathura </b></</p>
+											<span class="w3-agilesub"> </span>
+										</div>	
+									</div>
+								
+								</div>
+								<div class="col-md-4">
+									<div class="testi-slider">
+										<h4>"Best thing about Book"</h4>
+										<p>“Books always offer you knowledge; even if it you aren’t reading for academic purposes, they still teach you life lessons and morals. I love to read because it is relaxing. I like being swept up in a good story.”</p>
+										<div class="testi-subscript">
+											<p> --- <b> Vinay </b></</p>
+											<span class="w3-agilesub"> </span>
+										</div>	
+									</div>
+								
+								</div>
+								<div class="col-md-4">
+									<div class="testi-slider">
+										<h4>"Best thing about Book"</h4>
+										<p>“Books always offer you knowledge; even if it you aren’t reading for academic purposes, they still teach you life lessons and morals. I love to read because it is relaxing. I like being swept up in a good story”</p>
+										<div class="testi-subscript">
+											<p> --- <b> pankaj </b></p>
+											<span class="w3-agilesub"> </span>
+										</div>	
+									</div>
+								</div>
+								
+			
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="about-team"> 
+		<div class="container">
+			<h3 class="w3_agile_header">Meet Our Team</h3>
+			<div class="team-agileitsinfo">
+				<div class="col-md-3 about-team-grids">
+					<img src="../media/images/sachin1.jpg" alt=""/>
+					<div class="team-w3lstext">
+						<h4><span>Sachin Kumar</span></h4>
+						<p>Full-stack Developer </p>
+					</div>
+					<div class="social-icons caption"> 
+						<ul>
+							<li><a href="https://www.facebook.com/sachinalok143" style="color: black;" ><i class="fab fa-facebook-f"></i> </a></li>
+							<li><a href="https://twitter.com/sachinalok143" style="color: black;" ><i class="fab fa-twitter"></i> </a></li>
+							<li><a href="https://github.com/sachinalok143" style="color: black;" ><i class="fab fa-github"></i> </a></li> 
+						</ul>
+						<div class="clearfix"> </div>  
+					</div>
+				</div>
+				<div class=" col-md-3 about-team-grids">
+					<img src="../media/images/vinay.jpg" alt=""/>
+					<div class="team-w3lstext">
+						<h4><span>Vinay Singh</span></h4>
+						<p>Web Developer </p>
+					</div>
+					<div class="social-icons caption"> 
+						<ul>
+							<li><a href="https://www.facebook.com/vinaysingh5898"style="color: black;" ><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-twitter"></i> </a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-github"></i> </a></li> 
+						</ul>
+						<div class="clearfix"> </div>  
+					</div>
+				</div>
+				<div class="col-md-3 about-team-grids">
+					<img src="../media/images/pankaj.jpg" alt=""/>
+					<div class="team-w3lstext">
+						<h4><span>Pankaj Dhurve</span></h4>				
+						<p>Web Developer</p>
+					</div>
+					<div class="social-icons caption"> 
+						<ul>
+							<li><a href="https://www.facebook.com/pankaj.dhurve.77" style="color: black;" ><i class="fab fa-facebook-f"></i> </a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-twitter"></i> </a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-github"></i> </a></li> 
+						</ul>
+						<div class="clearfix"> </div>  
+					</div>
+				</div>
+				<div class="col-md-3 about-team-grids">
+					<img src="../media/images/mathura.jpg" alt=""/>
+					<div class="team-w3lstext">
+						<h4><span>Mathura Tudu</span></h4>
+						<p>Web Developer</p>
+					</div>
+					<div class="social-icons caption"> 
+						<ul>
+							<li><a href="https://www.facebook.com/math2do" style="color: black;" ><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-twitter"></i> </a></li>
+							<li><a href="#" style="color: black;" ><i class="fab fa-github"></i> </a></li> 
+						</ul>
+						<div class="clearfix"> </div>  
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>	
+{%endblock%}

@@ -1,0 +1,211 @@
+
+<div class="agileits_header">
+  <div class="container">
+     <!--  <div class="w3l_offers">
+        <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{% url 'get-book-by-seller' id=request.user.id %}">SHOP NOW</a></p>
+      </div> -->
+      {%if not request.user.is_authenticated%}
+      <div class="agile-login">
+        <ul>
+          <li><a href="{% url 'seller-register'%}"> Create Account </a></li>
+          <li><a href="{% url 'seller-login'%}">Login</a></li>
+          <li><a href="#footer_section" id="contact">Help</a></li>
+          
+        </ul>
+      </div>
+      {%else%}
+      <div class="agile-login">
+        <ul>
+          <li><a href=""> {{request.user.first_name}} {{request.user.last_name}} </a></li>
+          
+          <li><a href="{%url 'auth_logout'%}">Log out</a></li>
+          <li><a href="">Help</a></li>
+          
+        </ul>
+      </div>
+      <!-- <a href="{% url 'cart-view'%}">
+      <div class="product_list_header" >  
+        
+            <button class="w3view-cart" type="submit" name="submit" value="" style="color: white;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+          
+          </div></a> -->
+          {%endif%}
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+
+      <div class="logo_products">
+        <div class="container">
+          <div class="w3ls_logo_products_left1">
+            <ul class="phone_email">
+              <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0752) 258 41599</li>
+
+            </ul>
+          </div>
+          <div class="w3ls_logo_products_left">
+            <h1><a href="{%url 'seller-login'%}" style="color: #3e12da;">Book store</a></h1>
+          </div>
+          <div class="w3l_search">
+            <form action="#" method="post">
+              <input type="search" name="Search" placeholder="Search for a Book" required="">
+              <button type="submit" class="btn btn-default search" aria-label="Left Align" style="background-color: #3e12da; color: white">
+                <i class="fa fa-search" aria-hidden="true"> </i>
+              </button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <!-- //header -->
+      <!-- navigation -->
+      <div class="navigation-agileits" style="background-color: #3e12da;">
+        <div class="container">
+          <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+              <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div> 
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{%url 'seller-login'%}" class="act">Home</a></li> 
+               <!--  <li class="active"><a href="{% url 'get-book-by-seller' id=request.user.id %}" class="" data-toggle="dropdown">Books</a></li>  -->
+                <!-- Mega Menu -->
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="row">
+                      <div class="multi-gd-img">
+                        <ul class="multi-column-dropdown">
+
+                          <li><a href="{%url 'admin-register'%}">Register as Admin</a></li>
+                          <li><a href="{%url 'admin-login'%}">Login as Admin</a></li>
+
+                        </ul>
+                      </div>
+
+                    </div>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer<b class="caret"></b></a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="row">
+                      <div class="multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <li><a href="{%url 'home'%}">Customer Home</a></li>
+                          <li><a href="{%url 'customer-register'%}">Register as Customer</a></li>
+                          <li><a href="{%url 'customer-login'%}">Login as Customer</a></li>
+                          
+                        </ul>
+                      </div>
+                      
+                    </div>
+                  </ul>
+                </li>
+                          <!--
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Personal Care<b class="caret"></b></a>
+                      <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                          <div class="multi-gd-img">
+                            <ul class="multi-column-dropdown">
+                              <h6>Baby Care</h6>
+                              <li><a href="personalcare.html">Baby Soap</a></li>
+                              <li><a href="personalcare.html">Baby Care Accessories</a></li>
+                              <li><a href="personalcare.html">Baby Oil & Shampoos</a></li>
+                              <li><a href="personalcare.html">Baby Creams & Lotion</a></li>
+                              <li><a href="personalcare.html"> Baby Powder</a></li>
+                              <li><a href="personalcare.html">Diapers & Wipes</a></li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Packaged Foods<b class="caret"></b></a>
+                      <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                          <div class="multi-gd-img">
+                            <ul class="multi-column-dropdown">
+                              <h6>All Accessories</h6>
+                              <li><a href="packagedfoods.html">Baby Food</a></li>
+                              <li><a href="packagedfoods.html">Dessert Items</a></li>
+                              <li><a href="packagedfoods.html">Biscuits</a></li>
+                              <li><a href="packagedfoods.html">Breakfast Cereals</a></li>
+                              <li><a href="packagedfoods.html"> Canned Food </a></li>
+                              <li><a href="packagedfoods.html">Chocolates & Sweets</a></li>
+                            </ul>
+                          </div>
+                          
+                        
+                        </div>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<b class="caret"></b></a>
+                      <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                          <div class="multi-gd-img">
+                            <ul class="multi-column-dropdown">
+                              <h6>Tea & Coeffe</h6>
+                              <li><a href="beverages.html">Green Tea</a></li>
+                              <li><a href="beverages.html">Ground Coffee</a></li>
+                              <li><a href="beverages.html">Herbal Tea</a></li>
+                              <li><a href="beverages.html">Instant Coffee</a></li>
+                              <li><a href="beverages.html"> Tea </a></li>
+                              <li><a href="beverages.html">Tea Bags</a></li>
+                            </ul>
+                          </div>
+                
+                        </div>
+                      </ul>
+                    </li> -->
+                    <!-- <li><a href="#">Gourmet</a></li> -->
+                    <!-- <li><a href="#">Offers</a></li> -->
+                    <li><a href="#footer_section" id="contact">Contact</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown float-right" style="float: right;">
+                      {%if request.user.is_authenticated%}
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+                      <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                          <div class="multi-gd-img">
+                            <ul class="multi-column-dropdown">
+                              <h6><a href="{% url 'seller-login' %}"> {{request.user.first_name}} {{request.user.last_name}} </a></h6>
+                              <li><a href="{% url 'seller-login'%}">Your Profile</a></li>
+                              <li><a href="{% url 'get-order-by-seller'%}">Your Orders</a></li>
+                              
+                              <li><a href="{% url 'get-book-by-seller' id=request.user.id %}">Your Books</a></li>
+
+                              <!-- <li><a href="{% url 'place-order' flag=0%}">Orders</a></li> -->
+                              <li><a href="{%url 'auth_logout'%}">Log out</a></li>
+
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      </ul>
+                      {%else%}
+                      <li><a href="{% url 'seller-login' %}">Log in</a></li>
+                      {%endif%}
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <script type="text/javascript">
+            $('#contact').click(function(){
+$(document).scrollTop(200000) // any value you need
+});
+</script>

@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%load crispy_forms_tags%}
+
+
+{% block content%}
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+	<div class="container">
+		<ol class="breadcrumb breadcrumb1">
+			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+			<li class="active">Checkout Page</li>
+		</ol>
+	</div>
+</div>
+<!-- //breadcrumbs -->
+<!-- checkout -->
+
+<div id="cartviewId">
+	{% include 'cartIndividualView.html'%}
+</div>
+<!-- //checkout -->
+		
+{%endblock%}

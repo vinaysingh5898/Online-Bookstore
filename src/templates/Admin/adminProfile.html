@@ -1,0 +1,116 @@
+{%extends "adminBase.html"%}
+{%load crispy_forms_tags%}
+
+
+{% block content%}
+<style>
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+    <!-- Left Column -->
+    <div class="w3-third " >
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src=/media/img/SellerPic/no-img.jpg style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{seller.City}} , {{seller.State}} , {{seller.Country}}</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{request.user.email}}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{seller.PriPhone}}</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Address</b></p>
+          <p>{{seller.AddressLine}} , PIN-{{seller.PinCode}}</p>
+          <p>Secondary Phone number - {{seller.SecPhone}} </p>
+          
+          <br>
+        </div>
+      </div><br>
+
+
+    </div>
+
+    <!-- Right Column --> 
+    <div class="w3-twothird"> 
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom"> 
+        <table class="table table-striped  table-hover table-bordered">
+          <thead>
+            
+              <td>
+                SN
+              </td>
+              <td>
+                User Name
+              </td>
+              <td>
+                Primary Phone No
+              </td>
+              <td>
+                Secondary Phone No
+              </td>
+              
+              <td>
+                Address
+              </td>
+              <td>
+                Pin Code
+              </td>
+                <td>
+                Address Line
+              </td>
+              <td>
+                Remark
+              </td>
+            
+          </thead>
+          {% for seller in sellers%}
+          <tr>
+            <td>
+              {{seller.id}}
+            </td>
+            <td>
+            {{seller.User}}
+            </td>
+            <td>
+              {{seller.PriPhone}}
+            </td>
+            <td>
+              {{seller.SecPhone}}
+            </td>
+            <td>
+              {{seller.LandMark}},
+              {{seller.City}},<br>
+              {{seller.State}},
+              {{seller.Country}}
+            </td>
+            <td>
+              {{seller.PinCode}}
+            </td>
+            <td>
+              {{seller.AddressLine}}
+            </td>
+            <td>
+              {{seller.Remark}}
+            </td>
+           
+          </tr>
+          {%endfor%}
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

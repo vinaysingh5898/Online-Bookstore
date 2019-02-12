@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="brands">
+	<div class="container">
+		<h3>You are log out!</h3>
+		<div class="brands-agile">
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'customer-login' %}">Log in as Customer</a></p>
+				</div>
+			</div>
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'customer-register' %}">Register New  Customer</a></p>
+				</div>
+			</div>
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'seller-login' %}">Log in as Seller</a></p>
+				</div>
+			</div>
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'seller-register' %}">Register New Seller</a></p>
+				</div>
+			</div>
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'admin-login' %}">Log in as Admin</a></p>
+				</div>
+			</div>
+			<div class="col-md-2 w3layouts-brand">
+				<div class="brands-w3l">
+					<p><a href="{%url 'admin-register' %}">Rester New Admin</a></p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+</div>
+</div>	
+{% endblock %}
+

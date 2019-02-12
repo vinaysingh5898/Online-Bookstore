@@ -1,0 +1,166 @@
+<div class="checkout">
+	<div class="container">
+		{%ifequal orderObjectList|length 0%}
+		<h2 class="alert alert-info" style="text-align: center;">
+			Your order list is empty.
+			<a href="{%url 'get_books_by_category' id=0%}" style="font-size: 15px;">START SHOPING </a>
+		</h2>
+		{%else%}
+		<h2>Placed orders: <span>{{orderObjectList|length}} Books</span></h2>
+		
+		<div class="checkout-right">
+			<table class="timetable_sub">
+				<thead>
+					<tr>
+						<th>SL No.</th>	
+						<th>Product</th>
+						<th>Quantity</th>
+						<th>Book Name</th>
+						<th>Price</th>
+						
+					</tr>
+				</thead>
+				{%for orderObject in orderObjectList%}
+				<tr class="rem1">
+					<td class="invert">{{forloop.counter}}</td>
+					<td class="invert-image" >
+						<div class="row">
+							<div class="col-md-6">
+								<a href="{% url 'get_single_book' id=orderObject.bookEdition.id%}"><img  src="/media/{{orderObject.bookEdition.CoverImage}}" alt=" " style="height:25%;width:20%" class="img-responsive" /></a>
+							</div>
+							<div class="col-md-6">
+							<ul style="text-align: left;">
+							<li>Order placed&nbsp;<span style="color: blue;font-size: 10px;">
+								{{orderObject.orderObject.DateOfPurchase|timesince}} ego
+								</span>
+							</li>
+							<li>	
+								{% if orderObject.orderObject.DateOfShipment%}
+								Order is shiped.<span style="color: blue;font-size: 10px;">
+								{{orderObject.orderObject.DateOfShipment|timesince}}</span>
+								{%else%}
+								Order is ready to ship.
+								{%endif%}
+							</li>
+							<li>
+								
+								{% if orderObject.orderObject.DateOfDelivary%}
+								Book is delivered.
+								<span style="color: blue;font-size: 10px;">{{orderObject.orderObject.DateOfDelivary|timesince}}
+								</span>
+								{%else%}
+									{% if orderObject.orderObject.DateOfShipment%}
+									Order is ready to Delivery.
+									{%else%}
+									Book will be ready for delivery after shipping. 
+
+									{%endif%}
+								{%endif%}
+							</li>
+							</div>
+						</div>
+					</td>
+					<td class="invert">
+						<div class="quantity"> 
+							<div class="quantity-select">                           
+								
+								<div class="entry value"><span>{{orderObject.orderObject.Quantity}}</span></div>
+								
+							</div>
+						</div>
+					</td>
+					<td class="invert">{{orderObject.bookEdition.Book}}</td>
+					<td class="invert">{{orderObject.bookEdition.Price}}/-Rs</td>
+					
+				</tr>
+				{%endfor%}
+				<!--quantity-->
+				<script>
+					var decQuantityInCart = function($id){
+				// alert("get");
+				$.get("/dec-quantity-in-order/"+$id)
+				.done(function(data) {
+							// console.log(data);
+							toastr.info(data)								
+						}
+						);
+			}
+			var incQuantityInCart = function($id){
+				// alert("get");
+				$.get("/inc-quantity-in-order/"+$id)
+				.done(function(data) {
+							// console.log(data);
+							toastr.info(data)								
+						}
+						);
+			}
+			$('.value-plus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+				divUpd.text(newVal);
+
+			});
+
+			$('.value-minus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+				if(newVal>=1) divUpd.text(newVal);
+			});
+		</script>
+		<b>
+				<tr>
+					<td></td>	
+					<td>Total =Price + Delivery Charges(150.00/-Rs)</td>
+					<td></td>
+					<td></td>
+					<td><b>{{totalPrice}}.00/-Rs</b></td>
+					
+				</tr>
+		</b>	
+		<!--quantity-->
+	</table>
+</div>
+<div class="checkout-left">	
+	<!-- <div class="checkout-left-basket">
+		<h4>Continue to basket</h4>
+		<ul>
+			<li><b>Product</b> <i></i> <span>Rupees</span></li>
+
+			{%for orderObject in orderObjectList%}
+			<li>Product{{forloop.counter}} <i>-</i> <span>{{orderObject.bookEdition.Price}}.00 </span></li>
+
+			{%endfor%}
+			<li>Total Delivery Charges <i>-</i> <span>150.00</span></li>
+			<li>Total <i>-</i> <span>{{totalPrice}}.00</span></li>
+
+
+		</ul>
+	</div> -->
+	<div class="checkout-right-basket">
+		<a href="{% url 'get_books_by_category' id=0%}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+{%endifequal%}
+</div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> -->
+<script type="text/javascript">
+	// $(document).ready(function(){
+		// $('#sub').toastmessage('showSuccessToast', "New Author detail submitted!.");
+		// });
+		var sub=function(){
+			toastr.info('New Author detail submitted!."')
+		};
+		var deleteFromCart=function($id) {
+			if( confirm('Do you want remove book from order?')){
+				$.get("/delete-book-from-order/"+$id)
+				.done(
+					function(data) {
+						// console.log(data);
+						$('#orderviewId').html(data);
+						// toastr.info("Book has been removed from order!")
+						$().toastmessage('showSuccessToast', "Author is deleted!.");
+					}
+					);
+			}
+		};
+	</script>

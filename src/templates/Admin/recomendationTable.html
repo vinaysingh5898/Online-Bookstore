@@ -1,0 +1,51 @@
+{%ifequal  recommedations.count 0%}
+					<div class="alert alert-danger">
+						No Recommendation.
+					</div>
+					{%else%}
+<table class="table table-hovered table-bordered" id="tableData1">
+        <thead>
+            <tr>
+                <td>	
+                    Sn
+                </td>
+                <td>
+                    Recommended By
+                </td>
+                <td>
+                    Recommended Email
+                </td>
+                <td>
+                        Recommended At
+                </td>
+                <td>
+                    Remove
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for recommedation in recommedations%}
+                <tr>
+                        <td>	
+                            {{forloop.counter}}
+                        </td>
+                        <td>
+                            {{recommedation.RecommendedBy}}
+                        </td>
+                        <td>
+                            {{recommedation.Email}}
+                            <!-- Recommended Email -->
+                        </td>
+                        <td>
+                                
+                            {{recommedation.Created_at|timesince}} ego
+                                
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteRec({{recommedation.id}})">Remove</button>
+                        </td>
+                    </tr>
+                {%endfor%}	
+        </tbody>
+    </table>
+    {%endifequal%}

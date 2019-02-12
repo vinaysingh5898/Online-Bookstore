@@ -1,0 +1,46 @@
+{% for bookDetail in bookDetailList%}
+
+				{% if forloop.counter|divisibleby:4%}	
+				<div class="agile_top_brands_grids">
+					{%endif%}
+					<div class="col-md-3 col-md-offset-1 top_brand_left">
+						<div class="hover14 column" style="min-height: 370px;">
+							<div class="agile_top_brand_left_grid">
+								<div class="agile_top_brand_left_grid_pos">
+									<img src="../media/images/offer.png" alt=" " class="img-responsive" >
+								</div>
+								<div class="agile_top_brand_left_grid1">
+									<figure>
+										<div class="snipcart-item block">
+											<div class="snipcart-thumb">
+											<a href="{% url 'get_seller_single_book' id=bookDetail.bookEdition.id%}"><img title=" " alt=" " src="../media/{{bookDetail.bookEdition.CoverImage}}" style="max-height:100px "></a>		
+												<p>{{bookDetail.book.Title}}&nbsp;<span style="font-size: 10px; color: red">{{bookDetail.bookEdition.Edition}} Edition</span></p>
+
+												<h4> ₹{{bookDetail.discountedPrice}} <span> ₹{{bookDetail.bookEdition.Price}}</span></h4>
+											</div>
+											<div class="snipcart-details top_brand_home_details">
+												<!-- <form action="#" method="post"> -->
+													<!-- <fieldset> -->
+														
+														 {%if  request.user.is_authenticated%}
+														<input type="button" onclick="Remove({{bookDetail.bookEdition.id}},{{request.user.id}})" name="submit" value="Delete" class="button">
+														{%else%}
+														<a href="{% url 'customer-login' %}">
+														<input type="button"  name="submit" value="Log in For cart" class="button">
+														</a>
+														{%endif%}
+													<!-- </fieldset> -->
+												<!-- </form> -->
+											</div>
+										</div>
+									</figure>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% if forloop.counter|divisibleby:4 %}	
+				</div>
+				{%endif%}
+				{%endfor%}
+			

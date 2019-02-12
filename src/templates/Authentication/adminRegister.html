@@ -1,0 +1,62 @@
+{%extends "adminBase.html"%}
+{%load crispy_forms_tags%}
+{% block content%}
+
+{% if request.user.is_authenticated %}
+	<h1>{{title}}</h1>
+{% else%}
+<!-- <div class="row">
+	<div class=" col-md-6 ">
+		<form action="" method="POST">{%csrf_token%}
+			{{form1|crispy}}
+			{{form2|crispy}}		
+			<input class="btn btn-primary" type="submit" name="" value="submit">
+		</form>
+	</div>
+</div> -->
+<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'admin-login' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home
+				</a></li>
+				<li class="active">Register Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- login -->
+	<!--  -->
+	<div class="login">
+		<div class="container">
+			<h2>Register Form</h2>
+		<form action="" method="POST">{%csrf_token%}
+			<div class="row">
+				<div class="col-md-6">
+					<div class="jumbotron">
+						{{form1|crispy}}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="jumbotron">
+						{{form2|crispy}}	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+					<div class="jumbotron login-form-grids animated wow slideInUp">
+						<input type="submit" value="Register">
+					</div>
+				</div>
+		</form>
+		</div>
+		<br><br>
+		<h4>For New People</h4>
+		<hr>
+			<p><a href="{%url 'customer-login'%}">Log In</a> (Or) go back to <a href="{% url 'home' %}">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+		</div>
+	</div>
+{% endif%}
+
+
+</script>
+{%endblock%}

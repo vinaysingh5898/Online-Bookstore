@@ -1,0 +1,76 @@
+{%extends "sellerBase.html"%}
+{%load crispy_forms_tags%}
+
+
+{% block content%}
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third " >
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src=/media/{{seller.ProfileImg}} style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{seller.City}} , {{seller.State}} , {{seller.Country}}</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{request.user.email}}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{seller.PriPhone}}</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Address</b></p>
+          <p>{{seller.AddressLine}} , PIN-{{seller.PinCode}}</p>
+          <p>Secondary Phone number - {{seller.SecPhone}} </p>
+
+          <br>
+        </div>
+      </div><br>
+
+    </div>
+
+   
+     <div class="w3-twothird"> 
+  <label>Add Book Editions &nbsp;<span style="color: red; font-size: 10px;" id="addBook">Go bellow and add Book If it is not in list.</span> </label>
+  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 15px;"> 
+        <form action="" method="POST">{%csrf_token%}
+          {{form3|crispy}} 
+          <input type="submit" class="btn btn-success" value="Submit">
+          
+
+  <!-- End Grid -->
+  </div>
+    
+  <label style="color: blue;">Add Book&nbsp;<span style="color: red; font-size: 10px;">If it is not in list.</span> </label>
+      
+
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 15px;"> 
+        <form action="" method="POST">{%csrf_token%}
+          {{form2|crispy}} 
+          {{catform|crispy}}
+          <input type="submit" class="btn btn-success" value="Submit">
+          <a  href="{%url 'add-publisher'%}" class="btn btn-warning">Add new Publisher</a>
+        </form>
+
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+<script type="text/javascript">
+      $('#addBook').click(function(){
+$(document).scrollTop(1000) // any value you need
+});
+    </script>
+{%endblock%}

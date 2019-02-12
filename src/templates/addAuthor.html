@@ -1,0 +1,45 @@
+{%extends "adminBase.html"%}
+{%load crispy_forms_tags%}
+
+
+{% block content%}
+<div class="container">
+	<div class="row">
+	{%if request.user.is_authenticated%}
+		<div class=" col-md-4 ">
+			<form action="" method="POST">{%csrf_token%}
+				{{form|crispy}}
+				<button class="btn btn-primary" onclick="sub()" type="submit" name="" value="submit">Submit</button>
+			</form>
+		</div>
+	{%else%}
+	{%endif%}
+		<div class=" col-md-8 " style="padding-top: 15px; bottom-padding:50px;">
+			{%include 'authorTable.html'%}
+		</div>
+	</div>
+
+
+</div>
+<script type="text/javascript">
+	// $(document).ready(function(){
+		// $('#sub').toastmessage('showSuccessToast', "New Author detail submitted!.");
+		// });
+	var sub=function(){
+		toastr.info('New Author detail submitted!."')
+	};
+		var Delete=function($id) {
+			if( confirm('Do you want Delete this Author')){
+				$.get("/delete-author/"+$id)
+				.done(
+					function(data) {
+						// console.log(data);
+						$('#authorTbl').html(data);
+						toastr.info('showSuccessToast', "Author is deleted!.");
+					}
+					);
+			}
+		};
+
+</script>
+{%endblock%}

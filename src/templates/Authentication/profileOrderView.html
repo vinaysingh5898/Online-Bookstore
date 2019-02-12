@@ -1,0 +1,104 @@
+<div class="">
+	<!-- <div class="container"> -->
+
+	{%ifequal orderObjectList|length 0%}
+	<h2 class="alert alert-info" style="text-align: center;">
+		Your order list is empty.
+		<a href="{%url 'get_books_by_category' id=0%}" style="font-size: 15px;">START SHOPING </a>
+	</h2>
+	{%else%}
+	<h2>Placed orders: <span>{{orderObjectList|length}} Books</span></h2>
+
+	<div class="checkout-right">
+		<table class="timetable_sub">
+			<thead>
+				<tr>
+					<th>SL No.</th>	
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Book Name</th>
+					<th>Price</th>
+
+				</tr>
+			</thead>
+			{%for orderObject in orderObjectList%}
+			<tr class="rem1">
+				<td class="invert">{{forloop.counter}}</td>
+				<td class="invert-image" >
+					<div class="row">
+						<div class="col-md-6">
+							<a href="{% url 'get_single_book' id=orderObject.bookEdition.id%}"><img  src="/media/{{orderObject.bookEdition.CoverImage}}" alt=" " style="height:25%;width:20%" class="img-responsive" /></a>
+						</div>
+						<div class="col-md-6">
+							<ul style="text-align: left;">
+								<li>Order placed&nbsp;<span style="color: blue;font-size: 10px;">
+									{{orderObject.orderObject.DateOfPurchase|timesince}} ego
+								</span>
+							</li>
+							<li>	
+								{% if orderObject.orderObject.DateOfShipment%}
+								Order is shiped.<span style="color: blue;font-size: 10px;">
+								{{orderObject.orderObject.DateOfShipment|timesince}}</span>
+								{%else%}
+								Order is ready to ship.
+								{%endif%}
+							</li>
+							<li>
+								
+								{% if orderObject.orderObject.DateOfDelivery%}
+								Book is delivered.
+								<span style="color: blue;font-size: 10px;">{{orderObject.orderObject.DateOfDelivery|timesince}}
+								</span>
+								{%else%}
+								{% if orderObject.orderObject.DateOfShipment%}
+								Order is ready to Delivery.
+								{%else%}
+								Book will be ready for delivery after shipping. 
+
+								{%endif%}
+								{%endif%}
+							</li>
+						</div>
+					</div>
+				</td>
+				<td class="invert">
+					<div class="quantity"> 
+						<div class="quantity-select">                           
+
+							<div class="entry value"><span>{{orderObject.orderObject.Quantity}}</span></div>
+
+						</div>
+					</div>
+				</td>
+				<td class="invert">{{orderObject.bookEdition.Book}}</td>
+				<td class="invert">{{orderObject.bookEdition.Price}}/-Rs</td>
+
+			</tr>
+			{%endfor%}
+			<!--quantity-->
+
+			<b>
+				<tr>
+					<td></td>	
+					<td>Total =Price + Delivery Charges(150.00/-Rs)</td>
+					<td></td>
+					<td></td>
+					<td><b>{{totalPrice}}.00/-Rs</b></td>
+					
+				</tr>
+			</b>	
+			<!--quantity-->
+		</table>
+	</div>
+	<div class="checkout-left">	
+	<div class="checkout-left-basket">
+		<a href="{% url 'place-order' flag=0%}"><h4>All Order</h4></a>
+	</div>
+		<div class="checkout-right-basket">
+			<a href="{% url 'get_books_by_category' id=0%}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	{%endifequal%}
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> -->

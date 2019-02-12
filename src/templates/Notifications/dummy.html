@@ -1,0 +1,13 @@
+{% if not error1%}
+
+{%ifequal check 0 %}
+Book is added to your cart!
+{%else%}
+Book is already in your Cart!<br>
+Quantity is increase to {{Quantity}}!
+{%endifequal%}
+
+
+{%else%}
+You are not Loged In as Customer.<a href="{%url 'customer-login' %}"> Please Log in</a>
+{%endif%}

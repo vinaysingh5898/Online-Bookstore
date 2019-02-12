@@ -1,0 +1,136 @@
+<div class="checkout">
+	<div class="container">
+		{%ifequal cartObjectList|length 0%}
+		<h2 class="alert alert-info" style="text-align: center;">
+			Your cart is empty.
+			<a href="{%url 'get_books_by_category' id=0%}" style="font-size: 15px;">START SHOPING </a>
+		</h2>
+		{%else%}
+		<h2>Your shopping cart contains: <span>{{cartObjectList|length}} Books</span></h2>
+		
+		<div class="checkout-right">
+			<table class="timetable_sub">
+				<thead>
+					<tr>
+						<th>SL No.</th>	
+						<th>Product</th>
+						<th>Quantity</th>
+						<th>Book Name</th>
+						<th>Price</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				{%for cartObject in cartObjectList%}
+				<tr class="rem1">
+					<td class="invert">{{forloop.counter}}</td>
+					<td class="invert-image"><a href="{% url 'get_single_book' id=cartObject.bookEdition.id%}"><img  src="/media/{{cartObject.bookEdition.CoverImage}}" alt=" " style="height:25%;width:20%" class="img-responsive" /></a></td>
+					<td class="invert">
+						<div class="quantity"> 
+							<div class="quantity-select">                           
+								<div class="entry value-minus" onclick="decQuantityInCart({{cartObject.cartObject.id}})">&nbsp;</div>
+								<div class="entry value"><span>{{cartObject.cartObject.Quantity}}</span></div>
+								<div class="entry value-plus active" onclick="incQuantityInCart({{cartObject.cartObject.id}})">&nbsp;</div>
+							</div>
+						</div>
+					</td>
+					<td class="invert">{{cartObject.bookEdition.Book}}</td>
+					<td class="invert">{{cartObject.bookEdition.Price}}/-Rs</td>
+					<td class="invert" >
+						<div class="rem">
+							<button class="close1" onclick="deleteFromCart({{cartObject.cartObject.id}})" style="border: 1px solid gray; background-color: gray;">X </button>
+						</div>
+
+					</td>
+				</tr>
+				{%endfor%}
+				<!--quantity-->
+				<script>
+					var decQuantityInCart = function($id){
+				// alert("get");
+				$.get("/dec-quantity-in-cart/"+$id)
+				.done(function(data) {
+							// console.log(data);
+							toastr.info(data)								
+						}
+						);
+			}
+			var incQuantityInCart = function($id){
+				// alert("get");
+				$.get("/inc-quantity-in-cart/"+$id)
+				.done(function(data) {
+							// console.log(data);
+							toastr.info(data)								
+						}
+						);
+			}
+			$('.value-plus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+				divUpd.text(newVal);
+
+			});
+
+			$('.value-minus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+				if(newVal>=1) divUpd.text(newVal);
+			});
+		</script>
+		<b>
+				<tr>
+					<td></td>	
+					<td>Total =Price + Delivery Charges(150.00/-Rs)</td>
+					<td></td>
+					<td></td>
+					<td><b>{{totalPrice}}.00/-Rs</b></td>
+					<td></td>
+					
+				</tr>
+		</b>
+	</table>
+</div>
+<div class="checkout-left">	
+	<div class="checkout-left-basket">
+		<a href="{% url 'place-order' flag=request.user.id%}"><h4>Place Order</h4></a>
+	</div>
+	<!-- 	<ul>
+			<li><b>Product</b> <i></i> <span>Rupees</span></li>
+
+			{%for cartObject in cartObjectList%}
+			<li>Product{{forloop.counter}} <i>-</i> <span>{{cartObject.bookEdition.Price}}.00 </span></li>
+
+			{%endfor%}
+			<li>Total Delivery Charges <i>-</i> <span>150.00</span></li>
+			<li>Total <i>-</i> <span>{{totalPrice}}.00</span></li>
+
+
+		</ul>
+	</div> -->
+	<div class="checkout-right-basket">
+		<a href="{% url 'get_books_by_category' id=0%}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+{%endifequal%}
+</div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> -->
+<script type="text/javascript">
+	// $(document).ready(function(){
+		// $('#sub').toastmessage('showSuccessToast', "New Author detail submitted!.");
+		// });
+		var sub=function(){
+			toastr.info('New Author detail submitted!."')
+		};
+		var deleteFromCart=function($id) {
+			if( confirm('Do you want remove book from cart?')){
+				$.get("/delete-book-from-cart/"+$id)
+				.done(
+					function(data) {
+						// console.log(data);
+						$('#cartviewId').html(data);
+						// toastr.info("Book has been removed from cart!")
+						$().toastmessage('showSuccessToast', "Book is deleted!.");
+					}
+					);
+			}
+		};
+</script>

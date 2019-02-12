@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+   <link rel='icon' type='image/x-icon' href="{% static 'img/7.png'%}" />
+  <link rel="icon" href="{% static '/img/favicon.ico'%}">
+  
+  <title>{%block title %}{%endblock%}|Seller</title>
+  {%include "home_css.html"%} 
+</head>
+
+<body>
+  {%include "home_js.html"%} 
+  {% include 'sellerNavbar.html' %}
+  <!-- {%verbatim%} -->
+  <!-- {%endverbatim%} -->
+
+    {%block jumbotron%}
+
+
+    {%endblock%}
+  <main role="main" >
+    {% block content%}
+
+    {%endblock%}
+
+  </main>
+{% include "footer.html"%}
+
+</body>
+</html>
